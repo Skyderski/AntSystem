@@ -1,0 +1,93 @@
+
+<% include ../../partials/header.ejs %>
+<script src="/js/admin.js"></script>
+<style>
+
+
+    #games table,
+    #games table tr
+    {
+    display: block;
+    }
+    #games tr:hover >td {
+    background-color: #CCC;
+    }
+
+    .tools{
+    min-width : 65px;
+    }
+
+    .green { color : green;}
+    .red { color : red;}
+
+
+</style>
+
+<% include ../../partials/adminNav.ejs %>
+
+<div class="row">
+<button id="create-game">Nouvelle Partie</button>
+</div>
+<div class="row">
+    <div class="span8 offset1">
+
+        <table id="games" class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Carte</th>
+                <th>Missions</th>
+                <th>Equipes</th>
+                <th>Status</th>
+                <th>Tools</th>
+
+
+            </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+</div>
+
+<div id="dialog-form" title="Game Edition">
+
+    <form>
+        <fieldset>
+            <input type="hidden" name="id" id="id" value="0"/>
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+            <label for="map">Carte</label>
+            <input type="text" name="map" id="map" value="grotte.jpg" class="text ui-widget-content ui-corner-all">
+
+            <div id="teamList">
+                <label for="team1">Equipe 1</label>
+                <fieldset id="team1">
+                    <input type="text" name="team1Name" id="team1Name" value="Red"
+                           class="text ui-widget-content ui-corner-all">
+                    <input type="file" name="team1Logo" id="team1Logo" value=""
+                           class="text ui-widget-content ui-corner-all">
+                </fieldset>
+
+                <label for="team2">Equipe 2</label>
+                <fieldset id="team2">
+                    <input type="text" name="team2Name" id="team2Name" value="Blue"
+                           class="text ui-widget-content ui-corner-all">
+                    <input type="file" name="team2Logo" id="team2Logo" value=""
+                           class="text ui-widget-content ui-corner-all">
+                </fieldset>
+            </div>
+
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+
+<script>
+
+</script>
+
+
+<% include ../../partials/footer.ejs %>

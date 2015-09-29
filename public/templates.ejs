@@ -1,0 +1,64 @@
+
+
+    <div class="objectiveRow" missionId="">
+
+        <div class="input-group col-md-1">
+            <span class="input-group-addon" id="basic-addon1">#</span>
+            <input type="text" class="form-control objectiveid" placeholder="Id"  aria-describedby="basic-addon1" name="missionObjectivesId"  value="">
+        </div>
+        <div class="input-group col-md-2">
+
+            <select class="form-control" placeholder="Score"  aria-describedby="basic-addon1" name="missionObjectivesType" >
+                <option value="waypoint">Waypoint</option>
+                <option value="step">Etape</option>
+                <option value="collect">Collecte</option>
+                <option value="end">Fin</option>
+
+            </select>
+        </div>
+        <div class="input-group col-md-4">
+            <span class="input-group-addon" id="basic-addon1">Obj</span>
+            <input type="text" class="form-control" placeholder="Description"  aria-describedby="basic-addon1" name="missionObjectivesDesc"  value="">
+        </div>
+        <div class="input-group col-md-2">
+            <span class="input-group-addon" id="basic-addon1">?</span>
+            <input type="text" class="form-control" placeholder="Question"  aria-describedby="basic-addon1" name="missionObjectivesQuestion"  value="">
+            <input type="text" class="form-control" placeholder="Réponse"  aria-describedby="basic-addon1" name="missionObjectivesAnswer"  value="">
+        </div>
+
+        <div class="input-group col-md-1">
+
+            <input type="text" class="form-control" placeholder="Score"  aria-describedby="basic-addon1" name="missionObjectivesScore"  value="">
+
+        </div>
+
+        <div class="input-group col-md-1">
+            <button class="deleteObj" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+        </div>
+
+
+    </div>
+
+
+    <div class="missionPanel col-md-2">
+        <div class=" panel panel-default">
+            <div class="panel-heading">
+&nbsp;
+                <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#missionModal" data-missionid="">
+                <span class="glyphicon glyphicon-edit"> </span>
+                </button>
+                <button type="button" class="btn btn-default btn-xs pull-right delete-mission" data-missionid="">
+                    <span class="glyphicon glyphicon-remove"> </span>
+                </button>
+                <span class="pull-left badge"> </span>
+            </div>
+            <div class="panel-body">
+                <h4 class="title"> </h4>
+
+
+
+            </div>
+        </div>
+    </div>
+
+

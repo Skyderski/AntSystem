@@ -1,0 +1,72 @@
+#games table,
+    #games table tr
+    {
+    display: block;
+    }
+    #games tr:hover >td {
+    background-color: #CCC;
+    }
+
+    .tools{
+    min-width : 65px;
+    }
+
+    .green { color : green;}
+    .red { color : red;}
+
+    .input-group {
+    margin-bottom: 10px;
+    }
+
+    .panel-red {
+         border-color: #a94442;
+         }
+
+     .panel-red>.panel-heading {
+         color: #FFFfff;
+         background-color: #a94442;
+         border-color: #ebccd1;
+         }
+
+     .panel-blue {
+        border-color: #2e6da4;
+        }
+
+     .panel-blue>.panel-heading {
+        color: #FFFfff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        }
+
+     .panel-both {
+              border-color: #333;
+              }
+
+      .panel-both>.panel-heading {
+              color: #FFFfff;
+              background-image: linear-gradient(135deg, #a94442 49.5%, #fff 50%, #337ab7 50.5%,  #337ab7 0);
+
+      }
+
+
+    .min5{
+        min-height: 100px;
+
+
+    }
+
+    .min10{
+        height: 200px;
+    }
+
+    .min15{
+        height: 300px;
+    }
+
+    #team1Missions {
+        border-right:1px solid black;
+    }
+
+    #tempDiv {
+        display : none;
+    }

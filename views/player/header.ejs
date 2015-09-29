@@ -1,0 +1,29 @@
+
+
+<script src="/js/player.js"></script>
+<link rel="stylesheet" href="/css/player.css">
+
+<style>
+    .navbar-brand{
+        padding:5px;
+    }
+    .navbar-brand img{
+        height:40px
+    }
+
+
+</style>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/images/olaaf.png" >
+            </a>
+        </div>
+
+        Equipe : <%=session.team%>
+
+        <button type="button" class="btn btn-default navbar-btn pull-right"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+    </div>
+</nav>

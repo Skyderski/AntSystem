@@ -1,0 +1,215 @@
+
+<% include ../../partials/header.ejs %>
+<script>
+
+
+// init game list
+var gameid = <%=gameid%>;
+var dialog, teamList;
+
+$( document ).ready(function() {
+
+     module.detailsPage.init();
+});
+
+
+
+
+</script>
+
+<script src="/js/admin.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+
+
+<% include ../../partials/adminNav.ejs %>
+
+
+
+        <div id="teamList" class="row">
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Nom</span>
+                    <input type="text" class="form-control" placeholder="Nom"  aria-describedby="basic-addon1" name="name" id="name" value="">
+                </div>
+
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Map</span>
+                    <input type="text" class="form-control" placeholder="Carte"  aria-describedby="basic-addon1" name="map" id="map" value="grotte.jpg">
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Durée</span>
+                    <input type="text" class="form-control" placeholder="Durée"  aria-describedby="basic-addon1" name="duration" id="duration" value="">
+                </div>
+
+                <input type="hidden" name="id" id="id" value=""/>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <fieldset id="team1" teamnumber="1" class="panel panel-default panel-red " >
+                    <div class="panel-heading">
+                        <input type="hidden" value="1" name="team1Id" id="team1Id"/>
+                    <input type="text" name="team1Name" id="team1Name" value="Red"
+                           class="text ui-widget-content ui-corner-all">
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Logo</span>
+                            <input type="file" class="form-control" placeholder="Logo"  aria-describedby="basic-addon1" name="team1Logo" id="team1Logo" value="">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Score</span>
+                            <input type="text" class="form-control" placeholder="Score"  aria-describedby="basic-addon1" name="team1Score" id="team1Score" value="">
+                        </div>
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <fieldset id="team2" teamnumber="2" class="panel panel-default panel-primary">
+                    <div class="panel-heading">
+                        <input type="hidden" value="2" name="team2Id" id="team2Id"/>
+                        <input type="text" name="team2Name" id="team2Name" value="Blue"
+                               class="text ui-widget-content ui-corner-all">
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Logo</span>
+                            <input type="file" class="form-control" placeholder="Logo"  aria-describedby="basic-addon1" name="team2Logo" id="team2Logo" value="">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">Score</span>
+                            <input type="text" class="form-control" placeholder="Score"  aria-describedby="basic-addon1" name="team2Score" id="team2Score" value="">
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+
+        </div>
+<hr/>
+
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#missionModal">
+        Ajouter une mission
+    </button>
+
+    <button type="button" class="btn btn-primary btn-lg" id="btn-save">
+        Enregistrer la partie
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="missionModal" tabindex="-1" role="dialog" aria-labelledby="missionModalLabel">
+        <form id="missionEditor">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="missionModalLabel">Edition Mission</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="missionform" class="row">
+
+                        <input type="text" name="missionId" id="missionId" value="0"/>
+
+
+                        <div class="col-md-12 form-inline" >
+                            <h2>Mission</h2>
+                            <div class="input-group col-md-3">
+                                <span class="input-group-addon" id="basic-addon1">Nom</span>
+                                <input type="text" class="form-control" placeholder="Nom"  aria-describedby="basic-addon1" name="missionName" id="missionName" value="">
+                            </div>
+                            <div class="input-group col-md-2">
+                                <span class="input-group-addon" id="basic-addon1">Debut</span>
+                                <input type="text" class="form-control" placeholder="Début"  aria-describedby="basic-addon1" name="missionStart" id="missionStart" value="0">
+                            </div>
+                            <div class="input-group col-md-2">
+                                <span class="input-group-addon" id="basic-addon1">Fin</span>
+                                <input type="text" class="form-control" placeholder="Fin"  aria-describedby="basic-addon1" name="missionEnd" id="missionEnd" value="0">
+                            </div>
+                            <div class="input-group col-md-2">
+
+                                <select class="form-control" placeholder="Score"  aria-describedby="basic-addon1" name="missionTeam" id="missionTeam">
+                                    <option value="team1">Equipe 1</option>
+                                    <option value="team2">Equipe 2</option>
+                                    <option value="both">toutes</option>
+
+                                </select>
+                            </div>
+                            <div class="input-group col-md-12">
+                                <span class="input-group-addon" id="basic-addon1">Descr</span>
+                                <textarea type="text" height="200px" class="form-control" placeholder="Description"  aria-describedby="basic-addon1" name="missionDesc" id="missionDesc" value=""></textarea>
+                            </div>
+                            <div class="input-group col-md-12">
+                                <span class="input-group-addon" id="basic-addon1">Orga</span>
+                                <textarea type="text" class="form-control" placeholder="Orga"  aria-describedby="basic-addon1" name="missionOrga" id="missionOrga" value=""/></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" >
+
+                        <div class="col-md-12 form-inline" >
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Objectifs</h3>
+                                </div>
+                                <div class="panel-body" >
+                                    <div id="missionObjectives"></div>
+                                    <p><button id="add-missionObjectives"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></p>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveMission">Save changes</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+       <input type="hidden" class="form-control" placeholder="Json"  aria-describedby="basic-addon1" name="missions" id="missions" value=""></input>
+
+    <hr/>
+    <div  class="row" id="missionList">
+        <div id="missionListRed"  class="col-md-4"></div>
+        <div id="missionListBoth" class="col-md-4"></div>
+        <div id="missionListBlue" class="col-md-4"></div>
+
+
+
+
+
+    </div>
+
+
+
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+
+
+<div id="tempDiv"></div>
+
+
+
+
+<% include ../../partials/footer.ejs %>

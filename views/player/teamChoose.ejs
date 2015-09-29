@@ -1,0 +1,135 @@
+<% include ../../partials/header.ejs %>
+<% include ./header.ejs %>
+
+<style>
+
+    .teamChooser{
+        font-weight:bold;
+        font-size:3em;
+        width:250px;
+        height:100px;
+    }
+
+    .red{
+        color: red;
+    }
+
+    .blue{
+        color: blue;
+    }
+
+    .active.Red{
+        background-color:red;
+        color:#fff;
+    }
+
+    .active.Blue{
+        background-color:blue;
+        color:#fff;
+    }
+
+    .error-msg{
+        display : none;
+    }
+
+
+
+</style>
+
+<hr/>
+<div class="jumbotron">
+    <h1 class="text-center">Identifiez-vous</h1>
+    <form id="teamChooserForm">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               <div class="input-group input-group-lg ">
+                    <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
+                    <input type="text" class="form-control" placeholder="Pseudo"  aria-describedby="basic-addon1" name="playerId" id="playerId" value="">
+                </div>
+            </div>
+
+            <input type="hidden" name="teamId" id="teamId" value=""/>
+
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <fieldset id="teamchooserFS">
+            <% teams.forEach(function(team) { %>
+
+
+                <button type="button"
+                        class="btn  btn-lg teamChooser <%=team.name%>"
+
+                        team="<%=team.id%>"
+                        >
+                    <%=team.name%>
+                </button>
+            <% }); %>
+
+                </fieldset>
+
+
+            </div>
+        </div>
+        <hr/>
+        <div class="alert alert-danger error-msg" role="alert">
+            Merci d'entrer votre pseudo et choisir une équipe !
+
+        </div>
+        <hr/>
+        <div class="row text-center">
+            <button type="submit"
+                    class="btn  btn-lg validator"
+
+                    >
+                GO !
+            </button>
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+<script>
+    $('body').on('click', '.teamChooser', function() {
+
+        $(".teamChooser").removeClass("active");
+        $(this).addClass("active");
+        $("#teamId").val($(this).attr('team'));
+
+     });
+
+      $('body').on('submit', '#teamChooserForm', function() {
+        var valid = true;
+
+        valid = valid && module.form.checkLength( $( "#teamId" ), "name", 1, 80 );
+        valid = valid && module.form.checkLength( $( "#playerId" ), "playerId", 1, 80 );
+
+       if(!valid)
+            $('.error-msg').show();
+        else
+            $('.error-msg').hide();
+
+
+        $('#teamChooserForm').submit();
+
+         return false;
+     });
+
+
+
+
+
+
+</script>
+
+
+
+<% include ../../partials/footer.ejs %>
+
+

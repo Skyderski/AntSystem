@@ -1,0 +1,65 @@
+
+<% include ../../partials/header.ejs %>
+<script>
+// init game list
+var gameList = [];
+
+$( document ).ready(function() {
+
+     module.gamesPage.init();
+});
+
+
+
+
+</script>
+
+<script src="/js/admin.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+
+
+<% include ../../partials/adminNav.ejs %>
+
+
+<div class="row">
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Parties</div>
+        <div class="panel-body">
+            <p><button id="create-game">Nouvelle Partie</button></p>
+        </div>
+
+        <!-- Table -->
+        <table id="games" class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Carte</th>
+                <th>Missions</th>
+                <th>Equipes</th>
+                <th>Status</th>
+                <th>Tools</th>
+
+
+            </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<% include ../../partials/footer.ejs %>

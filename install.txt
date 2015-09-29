@@ -1,0 +1,13 @@
+npm install --save express@4.10.2
+npm install --save socket.io
+npm install swig --save
+npm install cookie-parser
+npm install express-session
+
+
+sqllite (http://raspberrywebserver.com/sql-databases/set-up-an-sqlite-database-on-a-raspberry-pi.html)
+http://www.tutorialspoint.com/sqlite/sqlite_installation.htm
+
+
+sudo apt-get install sqlite3
+sqlite3 antSystem.db
