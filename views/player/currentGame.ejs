@@ -1,12 +1,33 @@
 <% include ../../partials/header.ejs %>
 <% include ./header.ejs %>
+<% include ./navbar.ejs %>
 
-current game !
+<script>
+    var currentStatus = '<%=status%>';
+    var gameId = <%=game.rowid%>;
 
-<%=JSON.stringify(team)%>
-<br/>
-<%=JSON.stringify(game)%>
+var currentTeam;
+    $( document ).ready(function() {
+        currentTeam = <%=team.id%>;
 
+    });
+
+
+
+</script>
+
+
+<% if(status == 'pending'){ %>
+        <% include ../../partials/pendingScreen.ejs %>
+<% }else if(status =='play' || status=='pause'){%>
+
+<%        include ../../partials/playScreen.ejs%>
+
+<%}else if(status =='stop'){%>
+
+<%        include ../../partials/reportScreen.ejs%>
+
+<%}%>
 
 <% include ../../partials/footer.ejs %>
 

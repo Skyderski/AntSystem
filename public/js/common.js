@@ -1,9 +1,9 @@
-var module = {};
+var common = {};
 var socket = io();
 
 
 
-    module.form = {
+    common.form = {
 
         checkLength: function( o, n, min, max ) {
           if ( o.val().length > max || o.val().length < min ) {

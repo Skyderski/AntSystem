@@ -1,0 +1,69 @@
+<% include ../../partials/header.ejs %>
+
+<script>
+// init game list
+var gameList = [];
+
+$( document ).ready(function() {
+
+     module.gamesPage.init();
+
+
+
+     $('body').on('click', 'button', function() {
+
+        window.location.href="/admin/setstatus?status="+ $(this).attr('action') +"&gameid="+$(this).attr('gameid');
+
+
+     });
+
+});
+
+
+</script>
+
+<script src="/js/admin.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+
+
+<% include ../../partials/adminNav.ejs %>
+
+
+Current Status : <%= game.status %>
+
+<hr/>
+
+<% if(game.status == "pending"){%>
+
+
+    <button class="starter" action="play" gameid="<%=game.rowid %>">START !</button>
+
+
+<% }else if(game.status == "play"){ %>
+    <button class="pauser" action="pause" gameid="<%=game.rowid %>">PAUSE</button>
+    <button class="stoper" action="stop" gameid="<%=game.rowid %>">STOP</button>
+
+<% }else if(game.status == "pause"){ %>
+<button class="pauser" action="play" gameid="<%=game.rowid %>">RESUME</button>
+<button class="stoper" action="stop" gameid="<%=game.rowid %>">STOP</button>
+
+<% }else{ %>
+<button class="pauser" action="restart" gameid="<%=game.rowid %>">RESTART</button>
+
+
+<% }  %>
+
+<hr/>
+
+<form action="/admin/setTime">
+    <input type="hidden" name="gameid" value="<%=game.rowid%>"/>
+
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">MàJ temps de jeu : </span>
+        <input type="text" class="form-control" placeholder="Durée"  aria-describedby="basic-addon1" name="time" id="time" value="">
+    </div>
+    
+
+</form>
+
+<% include ../../partials/footer.ejs %>

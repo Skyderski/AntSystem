@@ -67,6 +67,8 @@ var socket = io();
              });
 
 
+
+
     },
 
     updateList : function(data,list){
@@ -277,8 +279,8 @@ var socket = io();
 
                   teamList = [];
 
-                  valid = valid && module.form.checkLength( $( "#name" ), "name", 1, 80 );
-                  valid = valid && module.form.checkLength( $( "#teamList input[type=text]" ), "Teams", 1, 80 );
+                  valid = valid && common.form.checkLength( $( "#name" ), "name", 1, 80 );
+                  valid = valid && common.form.checkLength( $( "#teamList input[type=text]" ), "Teams", 1, 80 );
 
                   if ( valid ) {
 

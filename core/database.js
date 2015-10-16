@@ -49,21 +49,24 @@ var updateRequest = function (data,callback) {
      var results = [];
      var whereStatement ="";
 
-     console.log(JSON.stringify(data));
 
      if(data.where ) whereStatement ="WHERE " + data.where;
      var setList = [];
 
-    for(key in data.col){
-    setList.push(key + " = '"+data.col[key]+"'");
 
+     var values = {};
+
+    for(key in data.col){
+
+        setList.push(key + " = $"+key);
+        values['$'+key] = data.col[key];
     }
 
-    query = "update game set "+setList.join()+" "+ whereStatement +";"
 
-    console.log("QUERY UPDATE :  "+ query);
 
-    db.run(query,function(err,row){
+    query = "update "+ data.table + " SET " +setList.join() +" "+ whereStatement +";";
+
+    db.run(query,values,function(err,row){
              if(err) console.log("ERROR : " + err);
 
     callback()});
@@ -80,16 +83,16 @@ var insertRequest = function (data,callback) {
     var whereStatement =""
     var colList =[];
     var valueList = [];
+    var values = {};
 
     for(key in data.col){
         colList.push(key);
-        valueList.push(data.col[key]);
+        valueList.push("$"+key);
+        values["$"+key]=data.col[key];
     }
-    query = "insert into game ("+ colList.join() +") VALUES ('"+valueList.join("','")+"'); ";
+    query = "insert into "+ data.table +" ("+ colList.join() +") VALUES ("+valueList.join(",")+"); ";
 
-    console.log("QUERY :  "+ query);
-
-     db.run(query,function(err,row){
+     db.run(query,values,function(err,row){
         if(err) console.log(err);
         callback()
      });
@@ -106,12 +109,13 @@ var deleteRequest = function (data,callback) {
 
     var whereStatement = data.where;
 
-
     var query = "DELETE from "+data.table + " WHERE " + whereStatement + ";" ;
+    console.log(query);
 
-    db.run(query, function(){
-    callback();
-    });
+    db.run(query, function(err,row){
+                          if(err) console.log(err);
+                          callback()
+                       });
 
 
      db.close();
@@ -158,8 +162,6 @@ module.exports = {
         		var whereStatement ="";
         		if(gameid) whereStatement = "WHERE rowid = "+gameid+";";
 
-
-
         		var query = "SELECT rowid,name,map,status,startDate,teams,(select count(rowid) from missions where idgame = rowid) as missions from game"+ whereStatement + ";";
 
 
@@ -182,9 +184,16 @@ module.exports = {
         },
 
 
+        getScore : function(gameid, callback){
+
+            module.exports.runRequest('select',{'col' : ['*'],'table': 'gamelog'},function(results){callback(results)})
+
+        },
 
 
-        getActiveGame : function(callback){
+
+
+        getActiveGame_todel : function(callback){
             var db = new sqlite3.Database(dbName);
             var activeGame = {"activeGame" : []};
             db.serialize(function() {
@@ -208,7 +217,7 @@ module.exports = {
 
             // TODO : check si c est deja actif et desactive si c est le cas !
             db.all("select status from game where rowid = "+ id + ";" , function(err,row){
-                    console.log(JSON.stringify(row));
+
 
                     db.run("update game set status = 'active' where rowid = "+ id + ";", function(){
                                 callback();
@@ -283,17 +292,10 @@ module.exports = {
 
              */
 
-             db.run("CREATE TABLE if not exists missions(idgame INT NOT NULL,name TEXT NOT NULL,objectives TEXT, map TEXT, start NUMERIC, end NUMERIC, description TEXT, status TEXT);");
 
-             // init gameLog table
-             /*
-                idgame : identifiant de la partie
-                player : identifiant du joueur
-                action : type d'action
-                status : status de l'action
-                dateaction : date relative de l'action (en min)
-             */
-             db.run("CREATE TABLE if not exists gamelog(idgame INT NOT NULL,player TEXT, action TEXT, status TEXT, dateaction NUMERIC);");
+          // db.run("drop table gamelog;");
+
+             db.run("CREATE TABLE if not exists gamelog(gameid INT NOT NULL,type TEXT, action TEXT, actionDate NUMERIC);");
 
 
             });

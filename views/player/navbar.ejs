@@ -1,0 +1,35 @@
+
+<style>
+
+
+</style>
+
+<nav class="navbar navbar-default <%=team.name %>">
+    <div class="container-fluid">
+        <div class="navbar-header ">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/images/olaaf.png" >
+            </a>
+
+
+        <button type="button" class="btn btn-default navbar-btn pull-right reset-player">
+            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+        </button>
+
+        <button class="btn btn-default navbar-btn pull-right score" type="button">
+            Score
+            <div class="badge badge-lg badge-score"><span class="pull-left score-team1">00</span>&nbsp;<span class="pull-right score-team2">00</span></div>
+        </button>
+
+        <button type="button" class="btn btn-default navbar-btn pull-right timer ">
+            <span class="<%=game.status%> timer-value">000</span> min
+        </button>
+
+        </div>
+
+
+
+
+
+    </div>
+</nav>

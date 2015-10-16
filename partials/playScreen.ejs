@@ -1,0 +1,120 @@
+
+
+
+<div class="pause-modal" tabindex="-1" role="dialog" >
+
+
+                <span class="glyphicon glyphicon-pause pause-sign" aria-hidden="true"></span>
+
+
+</div>
+
+
+
+<div class="mission-pattern hidden">
+
+    <div class="col-md-4 mission">
+
+        <button type="button" class="btn btn-default btn-lg btn-mission " data-toggle="modal" data-target="">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success left" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="" style="">
+
+                </div>
+                <div class="progress-bar used" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="" style="">
+
+                </div>
+
+
+            </div>
+            <span class="mission-name"></span>
+
+            <div class="mission-score">
+                <span class="mission-score-current"></span>/<span class="mission-score-total"></span>pts
+            </div>
+
+        </button>
+    </div>
+
+    <!-- Large modal -->
+
+    <div class="modal fade mission-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="mission-desc"></div>
+                    <ul class="mission-obj">
+
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    Score :
+                    <span class="mission-score-current"></span>
+                    /
+                    <span class="mission-score-total"></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<ul class="hidden">
+    <li class="vertical-align objective-pattern hidden obj-line row">
+
+
+        <div class="obj-type col-md-1 vertical-align" ></div>
+        <div class="col-md-11">
+            <div class="row obj-desc">
+
+            </div>
+            <div class="alert alert-success hide obj-success-msg" role="alert">SUCCESS</div>
+            <div class="row obj-question-line">
+
+                <div class="obj-question col-md-6 vertical-align"></div>
+
+                <div class="obj-answer col-md-5">
+
+
+                    <form   class="obj-form" target="#" onsubmit="return false;">
+                        <div class="form-group ">
+                            <label class="control-label obj-error-msg" for="inputSuccess2"></label>
+                            <input type="text" class="form-control obj-answer-input" id="inputSuccess2" placeholder="Réponse" aria-describedby="inputSuccess2Status">
+                            <input type="submit" style="visibility: hidden;">
+
+                            <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </li>
+
+
+</ul>
+
+<div class="mission-list mission-active row"></div>
+
+<div class="mission-list mission-future row"></div>
+<div class="mission-list mission-over row"></div>
