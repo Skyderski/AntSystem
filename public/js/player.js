@@ -238,6 +238,11 @@ module.playerPage = {
                  break;
                 }
 
+                if(currentObj.missionObjectivesType=="end" && objectiveComplete==true){
+                    missionDiv.find('.progress-bar').attr('style','width: 100%;').html("SUCCESS");
+                    missionDiv.find('.btn-mission').addClass("disabled");
+                 }
+
 
                 // cas d'un Step non accompli
                 if(currentObj.missionObjectivesType=="step" && objectiveComplete==false)
