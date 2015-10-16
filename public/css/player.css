@@ -171,6 +171,11 @@ display: none;
     font-weight:bold;
 }
 
+.mission-map{
+
+    max-width:300px;
+}
+
 
 
 .progress-bar.used{
