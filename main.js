@@ -272,8 +272,7 @@ socket.on('adminAddGame', function(data){
             "map": gameData.map,
             "teams": JSON.stringify(gameData.teams),
             "duration": gameData.duration,
-            "active" : '0',
-            "status": 'pending',
+
             "missions": JSON.stringify(gameData.missions),
             "creationDate":Date.now()
             }

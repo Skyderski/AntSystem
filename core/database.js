@@ -65,7 +65,6 @@ var updateRequest = function (data,callback) {
 
 
     query = "update "+ data.table + " SET " +setList.join() +" "+ whereStatement +";";
-
     db.run(query,values,function(err,row){
              if(err) console.log("ERROR : " + err);
 
