@@ -1,8 +1,11 @@
-npm install --save express@4.10.2
-npm install --save socket.io
-npm install swig --save
-npm install cookie-parser
-npm install express-session
+/opt/node-4.1.1/bin/npm install --save express@4.10.2
+/opt/node-4.1.1/bin/npm install --save socket.io
+/opt/node-4.1.1/bin/npm install swig --save
+/opt/node-4.1.1/bin/npm install cookie-parser
+/opt/node-4.1.1/bin/npm install cookie-session
+/opt/node-4.1.1/bin/npm install express-session
+
+/opt/node-4.1.1/bin/npm install forever -g
 
 
 sqllite (http://raspberrywebserver.com/sql-databases/set-up-an-sqlite-database-on-a-raspberry-pi.html)

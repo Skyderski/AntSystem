@@ -112,6 +112,10 @@
     height: 30%;
 }
 
+.map-modal .modal-content{
+    text-align:center;
+}
+
 
 .panel-mission.red,
  .panel-mission.team1{

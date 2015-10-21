@@ -39,6 +39,12 @@ module.playerPage = {
                     module.playerPage.updateDisplay();
                     timer=setInterval(function() {module.playerPage.updateDisplay()}, timeStep);
 
+                    $('.map-modal').on('show.bs.modal', function () {
+                        $('.map-modal img').css('overflow-y', 'auto');
+                        $('.map-modal img').css('max-width', $(window).width() * 0.9);
+                        $('.map-modal img').css('max-height', $(window).height() * 0.9);
+                    });
+
 
 
         },
