@@ -1,6 +1,90 @@
-<div class="panel panel-warning">
+<%
+var teams = JSON.parse(game.teams);
+%>
 
-    En cours de construction
+<div class="row report">
+
+    <div class="col-md-6">
+
+        <%
+        var winner = {};
+        //game.score[2]++;
+        if(game.score[1]>game.score[2])
+            winner = teams[0];
+        else if(game.score[2]>game.score[1])
+            winner = teams[1];
+
+        %>
+
+        <%if(winner.name){%>
+        <div class="panel panel-default ">
+            <div class="panel-body">
+               L'équipe ayant remporté le plus de points est :
+            </div>
+        </div>
+        <%}%>
+
+        <div class="jumbotron <%=winner.name%>">
+            <h1>
+                <%if(!winner.name){%>
+                DRAW !
+                <%}%>
+                <%=winner.name%>
+
+            </h1>
+            <p></p>
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+   <div class="col-md-6">
+
+        <table class="table table-bordered table-report">
+          <thead>
+
+               <tr>
+                   <th>Joueurs</th>
+                   <th>Equipe</th>
+                   <th>Réponses correctes</th>
+                   <th>Erreurs</th>
+
+               </tr>
+          </thead>
+            <tbody>
+        <%
+
+
+        Object.keys(game.playersLog).forEach(function(key) {
+        var val = game.playersLog[key];
+
+        %>
+
+                <tr class="<%=teams[val.team -1].name%>">
+
+                    <td><%=key%></td>
+                    <td><%=teams[val.team -1].name%></td>
+                    <td><%=val.success%></td>
+                    <td><%=val.fail%></td>
+                </tr>
+
+
+
+        <%
+        });%>
+            </tbody>
+
+        </table>
+
+   </div>
 
 
 </div>

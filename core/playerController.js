@@ -18,8 +18,13 @@ module.exports = {
                     database.runRequest('select',{table : 'gamelog', col : ['rowid','*'], where : "gameid="+activeGame[0].rowid},function(gamelog){
 
                                     activeGame[0].log = gamelog;
+                                    var parsedLog = module.exports.parseLog(gamelog);
+                                    activeGame[0].score = parsedLog.score;
+                                    activeGame[0].playersLog = parsedLog.players;
 
-                                    activeGame[0].score = module.exports.getScoreArray(gamelog);
+
+
+                                    //activeGame[0].score = module.exports.getScoreArray(gamelog);
 
 
                                     callback(activeGame);
@@ -35,6 +40,51 @@ module.exports = {
 
             });
 
+        },
+
+        parseLog: function(log){
+
+        var parsedLog = {};
+        var score = {};
+        var players = {};
+
+        log.forEach(function(line,index){
+
+            if(line.type=="score" && line.action){
+
+
+                var currentAction = JSON.parse(line.action);
+
+
+                if(!players[currentAction.player]) players[currentAction.player]={};
+                    players[currentAction.player].team = currentAction.team;
+                if(!players[currentAction.player][currentAction.result])
+                    players[currentAction.player][currentAction.result]=1;
+                else
+                    players[currentAction.player][currentAction.result]++;
+
+
+
+                if(currentAction.result == "success"){
+                    if(!score[currentAction.team]) score[currentAction.team] = 0;
+
+                      score[currentAction.team] += parseInt(currentAction.score);
+
+                }
+
+
+            }
+
+
+        });
+
+        parsedLog.players = players;
+        parsedLog.score = score;
+
+
+
+
+        return parsedLog;
         },
 
         getScoreArray: function(log){
@@ -111,7 +161,7 @@ module.exports = {
 
         },
 
-        getScore: function(game, callback){
+        getScoreTODEL: function(game, callback){
 
              var whereStatement = "type='score' and gameid = " + gameid +" order by actionDate";
 
@@ -136,7 +186,7 @@ module.exports = {
 
                         var playerTeam = module.exports.getPlayerTeam(allTeams,req.session.teamId);
 
-                        var allMissions = getPlayerMission(req.session);
+
                         res.render('player/currentGame.ejs', {'session':req.session, 'team': playerTeam, 'game' : game , 'status' : status});
                     }
                     else{
@@ -249,7 +299,7 @@ module.exports = {
 
 };
 
-var getPlayerMission = function(){};
+
 var checkPlayerSession = function(req){
 
                 if(req.session && req.session.hasOwnProperty('playerId'))

@@ -61,14 +61,7 @@
 
     }
 
-    .blue{
-       # background-color: #337ab7;
-    }
 
-    .red{
-        #background-color: #a94442;
-
-    }
 
     .navbar.blue,.navbar.Blue{
         background-image: linear-gradient(135deg, #337ab7 30%, transparent 70%);
@@ -222,5 +215,49 @@ display: none;
 .obj-question{
     height:34px;
     vertical-align: middle;
+
+    }
+
+
+/* reports */
+
+.report .Red{
+  background-color: #a94442;
+  color: #fff;
+}
+
+.report .Blue{
+ background-color: #337ab7;
+ color: #fff;
+}
+
+.report .jumbotron h1{
+    text-align: center;
+}
+
+.table-report{
+    text-align:center;
+}
+
+.table-report tbody{
+    color: #fff;
+    }
+
+.table-report thead th{
+
+    text-align:center;
+    vertical-align: middle;
+    }
+
+.table-report td{
+    width:100px;
+}
+
+.table-report .blue,.table-report .Blue{
+       background-color: #337ab7;
+    }
+
+.table-report .red,.table-report .Red{
+        background-color: #a94442;
 
     }
