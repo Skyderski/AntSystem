@@ -8,10 +8,12 @@ var teams = JSON.parse(game.teams);
 
         <%
         var winner = {};
-        //game.score[2]++;
-        if(game.score[1]>game.score[2])
+
+
+
+        if(game.score[1] &&(game.score[1]>game.score[2] || !game.score[2]))
             winner = teams[0];
-        else if(game.score[2]>game.score[1])
+        else if(game.score[2] && (game.score[2]>game.score[1] || ! game.score[1]))
             winner = teams[1];
 
         %>
