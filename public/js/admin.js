@@ -52,6 +52,7 @@ var socket = io();
              });
 
              $( ".supprBtn" ).button().on( "click", function() {
+             if(window.confirm("Suppression ? "))
                  socket.emit('removeGame',$(this).attr('gameid'));
              });
 

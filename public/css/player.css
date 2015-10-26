@@ -173,6 +173,16 @@ display: none;
     max-width:300px;
 }
 
+.mission-desc img{
+max-width:200px;
+
+}
+
+.mission-desc img.map{
+max-width:300px;
+
+}
+
 
 
 .progress-bar.used{
