@@ -416,6 +416,8 @@ var socket = io();
 
                 for(currentMission in missionsList){
 
+                    if(currentMission=="size") continue;
+
                     if(!timeline[missionsList[currentMission].start])timeline[missionsList[currentMission].start]=[];
                     timeline[missionsList[currentMission].start].push(missionsList[currentMission].id);
                 }
@@ -436,14 +438,15 @@ var socket = io();
             if($("#missions").val()) allMissions = JSON.parse($("#missions").val());
 
             if(!allMissions.missions)
-                allMissions = {'timeline':{}, 'missions' : {}};
+                allMissions = {'timeline':{}, 'missions' : {'size':0}};
 
-console.log(JSON.stringify(allMissions));
            // add to all mission objects
            if(missionJSON.id==0){
                        // new
+                    allMissions.missions.size = parseInt( allMissions.missions.size)+1;
+                   // missionJSON.id = ""+(parseInt(Object.keys(allMissions.missions).length) + 1);
+                     missionJSON.id =  allMissions.missions.size;
 
-                    missionJSON.id = parseInt($.map(allMissions.missions, function(n, i) { return i; }).length) + 1;
             }
 
             allMissions.missions[missionJSON.id]=missionJSON;
