@@ -192,7 +192,7 @@ var socket = io();
 
              $('body').on('click', '.delete-mission', function() {
 
-                         console.log("delete this : " + $(this).data("missionid"));
+                          if(window.confirm("Suppression ? "))
                    module.detailsPage.removeMission($(this).data("missionid"));
              });
 
